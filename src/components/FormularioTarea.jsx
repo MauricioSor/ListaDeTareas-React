@@ -3,19 +3,14 @@ import ListaTareas from "./ListaTareas";
 import { useState, useEffect } from "react";
 
 const FormularioTarea = () => {
-  const tareasDelLocalStorage = JSON.parse(localStorage.getItem('listaTareas')) || [];
   const [tarea, setTarea] = useState("");
-  const [tareas, setTareas] = useState(tareasDelLocalStorage);
+  const [tareas, setTareas] = useState([]);
   
-  //ciclo de vida
-  useEffect(()=>{
-   localStorage.setItem('listaTareas', JSON.stringify(tareas));
-  }, [tareas])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setTareas([...tareas, tarea]);
-    //limpiar el input
     setTarea('');
   };
 
